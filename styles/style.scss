@@ -1,0 +1,42 @@
+// חלק א סעיף א
+@mixin fontStyle($family...){
+    font-family: $family;
+    font-size: 18px;
+    color: rgb(226, 43, 122);
+}
+body{
+    @include fontStyle(sans-serif,'Segoe UI', Tahoma, Geneva, Verdana);
+    ul{
+        li{
+            //חלק א סעיף ב
+            a{
+                color: gray;
+                text-decoration: none;
+            }
+            //חלק א סעיף ג
+            input{
+                border-radius: 50%;
+                //חלק א סעיף ג
+                &:hover{
+                    opacity: 30%;
+                }
+            }
+        }
+    }
+}
+//חלק ב סעיף א
+@each $state, $color, $style in ((success, green, pointer ),(danger, red, pointer),(info, gray,help ),(warning, orange, auto)){
+    .text-#{$state}{
+        color: $color;
+        cursor: $style;
+        background-color: lighten($color,50);
+        font-weight: bold;
+        font-size: medium;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+}
+@for $i from 1 through 12{
+    .column-#{$i}{
+        width: $i/12;
+    }
+}
